@@ -16,7 +16,7 @@ public class AdminController {
     private final OrderService orderService;
 
     @PutMapping("/{orderId}/match")
-    public ResponseEntity<Void> cancelOrder(@PathVariable Long orderId) {
+    public ResponseEntity<Void> matchOrder(@PathVariable Long orderId) {
         orderService.matchPendingOrder(orderId);
         return ResponseEntity.ok().build();
     }
