@@ -21,8 +21,8 @@ public class OrderController {
     }
 
     @PutMapping("/{orderId}/cancel")
-    public ResponseEntity<Void> cancelOrder(@PathVariable Long orderId, @RequestParam Long customerId) throws Exception {
-        orderService.cancelOrder(orderId, customerId);
+    public ResponseEntity<Void> cancelOrder(@PathVariable Long orderId)  {
+        orderService.cancelOrder(orderId);
         return ResponseEntity.ok().build();
     }
 

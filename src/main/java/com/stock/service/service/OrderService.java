@@ -6,7 +6,7 @@ public interface OrderService {
 
     void createOrder(OrderRequest orderRequest) throws Exception;
 
-    void cancelOrder(Long orderId, Long customerId);
+    void cancelOrder(Long orderId);
 
     void matchPendingOrder(Long orderId);
 }

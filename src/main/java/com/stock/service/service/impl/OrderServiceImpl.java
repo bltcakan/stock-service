@@ -67,11 +67,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional(rollbackOn = Exception.class)
-    public void cancelOrder(Long orderId, Long customerId) {
-        log.info("Order cancel request received. OrderId: {}, CustomerId: {}", orderId, customerId);
+    public void cancelOrder(Long orderId) {
+
         UserDetailsDto currentUserDetails = customUserDetailsService.getCurrentUserDetails();
         orderValidationService.validateCancelOrder(orderId);
-        Order order = orderRepository.findByIdAndCustomerIdAndStatus(orderId, currentUserDetails.getId(), OrderStatus.PENDING)
+        Long customerId = currentUserDetails.getId();
+
+        log.info("Order cancel request received. OrderId: {}, CustomerId: {}", orderId, customerId);
+        Order order = orderRepository.findByIdAndCustomerIdAndStatus(orderId, customerId, OrderStatus.PENDING)
                 .orElseThrow(() -> new OrderNotFoundException("Order not found"));
 
         cancelOrderStrategyContext.getStrategy(order.getSide()).handleCancelOrder(order);
@@ -80,7 +83,6 @@ public class OrderServiceImpl implements OrderService {
 
         log.info("Order canceled: {}", order);
     }
-
     @Override
     @Transactional(rollbackOn = Exception.class)
     public void matchPendingOrder(Long orderId) {
