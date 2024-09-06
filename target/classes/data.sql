@@ -1,4 +1,4 @@
-INSERT INTO customer (username, password, role) VALUES ('admin', '{noop}admin123', 'ADMIN');
+INSERT INTO customer (username, password, role) VALUES ('admin', 'admin123', 'ADMIN');
 INSERT INTO customer (username, password, role) VALUES ('user1', '{noop}admin123', 'USER');
 INSERT INTO customer (username, password, role) VALUES ('user2', '{noop}admin123', 'USER');
 
