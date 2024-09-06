@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@Table(name = "trade_order")
 public class Order {
 
     @Id
@@ -35,6 +36,7 @@ public class Order {
 
     private BigDecimal price;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     @Version
