@@ -16,7 +16,7 @@ Komutları çalıştırılmalıdır
 #### Şifreleri admin123
 
 ### Match Order Sadece Admin Kullanıcısı Kullanabilir
-#### curl -u admin:admin123 http://localhost:8080/api/v1/admin/1/match -> verilen order ı match eder
+####  curl -u admin:admin123 -X PUT -v http://localhost:8080/api/v1/admin/1/match -> verilen order ı match eder
 
 
 
